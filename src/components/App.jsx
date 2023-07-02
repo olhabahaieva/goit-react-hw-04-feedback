@@ -1,23 +1,24 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import Feedback from './Feedback';
 import Statistics from './Statistics';
 import NotificationMessage from './NotificationMessage';
 
-export class App extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
+export const App = () =>{
 
-  handleFeedbackClick = buttonName => {
-    this.setState(prevState => ({
-      [buttonName]: prevState[buttonName] + 1,
-    }));
-  };
+    const [good, setGood] = useState(0)
+    const [neutral, setNeutral] = useState(0)
+    const [bad, setBad] = useState(0)
 
-  render() {
-    const { good, neutral, bad } = this.state;
+    const handleFeedbackClick = buttonName => {
+      if (buttonName === 'good') {
+        setGood(prevGood => prevGood + 1);
+      } else if (buttonName === 'neutral') {
+        setNeutral(prevNeutral => prevNeutral + 1);
+      } else if (buttonName === 'bad') {
+        setBad(prevBad => prevBad + 1);
+      }
+    };
+   
     const totalFeedback = good + neutral + bad;
     const isFeedbackGiven = totalFeedback > 0;
 
@@ -33,10 +34,10 @@ export class App extends Component {
         }}
       >
         <div>
-          <Feedback onFeedbackClick={this.handleFeedbackClick} />
+          <Feedback onFeedbackClick={handleFeedbackClick} />
 
           {isFeedbackGiven ? (
-            <Statistics feedback={this.state} />
+            <Statistics feedback={{ good, neutral, bad }} />
           ) : (
             <NotificationMessage />
           )}
@@ -44,4 +45,4 @@ export class App extends Component {
       </div>
     );
   }
-}
+
