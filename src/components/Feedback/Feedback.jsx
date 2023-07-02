@@ -1,24 +1,22 @@
-import { Component } from 'react';
+import React from 'react';
 import Section from 'components/Section';
 import FeedbackOptions from 'components/FeedbackOptions';
 import css from './Feedback.module.css';
 
-class Feedback extends Component {
-  handleClick = (buttonName) => {
-    this.props.onFeedbackClick(buttonName);
+const Feedback = ({onFeedbackClick})=>{
+  const handleClick = (buttonName) => {
+    onFeedbackClick(buttonName);
   };
-
-  render() {
-    return (
-      <>
-        <div className={css.feedback}>
-          <Section title='Leave Feedback Please'>
-          <FeedbackOptions onFeedbackClick={this.handleClick}/>
-          </Section>
-        </div>
-      </>
-    );
-  }
+  return (
+    <>
+      <div className={css.feedback}>
+        <Section title='Leave Feedback Please'>
+        <FeedbackOptions onFeedbackClick={handleClick}/>
+        </Section>
+      </div>
+    </>
+  );
 }
+
 
 export default Feedback;
