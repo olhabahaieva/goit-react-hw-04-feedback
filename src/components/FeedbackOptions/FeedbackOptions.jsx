@@ -1,5 +1,6 @@
 import React from 'react';
 import css from './FeedbackOptions.module.css';
+import PropTypes from 'prop-types';
 
 const FeedbackOptions = ({ onFeedbackClick }) => {
   const handleClick = buttonName => {
@@ -37,5 +38,9 @@ const FeedbackOptions = ({ onFeedbackClick }) => {
     </>
   );
 };
+
+FeedbackOptions.propTypes = {
+  onFeedbackClick: PropTypes.func
+}
 
 export default FeedbackOptions;
