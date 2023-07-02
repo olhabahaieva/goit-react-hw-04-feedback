@@ -2,6 +2,7 @@ import React from 'react';
 import Section from 'components/Section';
 import FeedbackOptions from 'components/FeedbackOptions';
 import css from './Feedback.module.css';
+import PropTypes from 'prop-types';
 
 const Feedback = ({onFeedbackClick})=>{
   const handleClick = (buttonName) => {
@@ -18,5 +19,8 @@ const Feedback = ({onFeedbackClick})=>{
   );
 }
 
+Feedback.propTypes = {
+  onFeedbackClick: PropTypes.func
+}
 
 export default Feedback;
