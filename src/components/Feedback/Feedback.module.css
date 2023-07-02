@@ -1,0 +1,9 @@
+/*main block*/
+.feedback{
+    display: flex;
+    flex-direction: column;
+}
+
+.heading{
+    font-size: 36px;
+}
